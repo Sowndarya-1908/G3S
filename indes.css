@@ -1,0 +1,673 @@
+
+/* ===== GLOBAL ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#fff;
+}
+
+/* ===== HEADER ===== */
+.header{
+  position:sticky;
+  top:10px;
+  z-index:1000;
+
+  width:90%;
+  margin:10px auto;
+  padding:15px;
+  border-radius:40px;
+
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    linear-gradient(45deg,limegreen,purple) border-box;
+
+  border:2px solid transparent;
+}
+
+/* NAV */
+.nav-container{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* LOGO */
+.logo img{
+  height:70px;
+}
+
+/* NAV LINKS */
+.nav-links{
+  display:flex;
+  gap:30px;
+  list-style:none;
+  align-items:center;
+}
+
+/* TEXT */
+.nav-links a{
+  text-decoration:none;
+  background:linear-gradient(45deg,limegreen,purple);
+  -webkit-background-clip:text;
+  color:transparent;
+  font-weight:500;
+}
+
+/* BUTTON */
+.btn, .cta-btn{
+  padding:10px 20px;
+  border-radius:30px;
+  border:none;
+  color:#fff;
+  background:linear-gradient(45deg,limegreen,purple);
+  cursor:pointer;
+}
+
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+  background:linear-gradient(45deg,limegreen,purple);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* ===== HERO ===== */
+.hero{
+  text-align:center;
+  padding:100px 20px;
+}
+
+.hero h1{
+  font-size:50px;
+}
+
+.gradient{
+  background:linear-gradient(45deg,limegreen,purple);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* ===== SERVICES ===== */
+.services-section{
+  padding:0px 10%;
+  text-align:center;
+}
+
+.services-title{
+  font-size:40px;
+  margin-bottom:40px;
+  background:linear-gradient(45deg,limegreen,purple);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* GRID */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+}
+
+/* CARD */
+.service-card{
+  position:relative;
+  padding:25px;
+  border-radius:20px;
+  background:#fff;
+  overflow:hidden;
+  border:3px solid #000000;
+  transition:0.4s;
+}
+
+/* ICON */
+.icon{
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+/* HOVER EFFECT */
+.service-card:hover{
+  transform:translateY(-6px);
+  background:linear-gradient(
+    45deg,
+    rgba(50,205,50,0.08),
+    rgba(128,0,128,0.08)
+  );
+}
+
+/* ANIMATED BORDER */
+.service-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  padding:3px;
+  border-radius:20px;
+
+  background:linear-gradient(120deg,limegreen,purple,limegreen);
+  background-size:300%;
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+
+  opacity:0;
+}
+
+.service-card:hover::before{
+  opacity:1;
+  animation:borderMove 3s linear infinite;
+}
+
+/* GLOW */
+.service-card::after{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border-radius:25px;
+  background:linear-gradient(120deg,limegreen,purple,limegreen);
+  filter:blur(15px);
+  opacity:0;
+  z-index:-1;
+}
+
+.service-card:hover::after{
+  opacity:0.6;
+  animation:borderMove 3s linear infinite;
+}
+
+/* ANIMATION */
+@keyframes borderMove{
+  0%{background-position:0%}
+  50%{background-position:100%}
+  100%{background-position:0%}
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+
+  /* SHOW HAMBURGER */
+  .menu-toggle{
+    display:block;
+  }
+
+  /* HIDE DESKTOP MENU */
+  .nav-links{
+    position:absolute;
+    top:80px;
+    left:0;
+    width:100%;
+    background:#fff;
+    flex-direction:column;
+    gap:20px;
+    padding:20px;
+    display:none;
+    text-align:center;
+    border-radius:20px;
+  }
+
+  /* SHOW MENU WHEN ACTIVE */
+  .nav-links.active{
+    display:flex;
+  }
+
+  /* HIDE BUTTON */
+  .btn{
+    display:none;
+  }
+
+  /* HERO TEXT */
+  .hero h1{
+    font-size:32px;
+  }
+
+  /* SERVICES → 1 COLUMN */
+  .services-section{
+    padding-top: 0px;
+  }
+  .services-grid{
+
+    grid-template-columns:1fr;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* port */
+
+/* SECTION */
+.portfolio{
+  padding:80px 10%;
+  text-align:center;
+}
+
+.section-title{
+  font-size:40px;
+}
+
+.section-title span{
+  background:linear-gradient(45deg,limegreen,purple);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.section-sub{
+  margin:15px auto 40px;
+  color:#555;
+}
+
+/* GRID */
+.portfolio-grid{
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+/* CARD */
+.portfolio-card{
+  flex:1;
+  min-width:280px;
+  border-radius:25px;
+  text-decoration:none;
+  color:#000;
+  transition:0.3s;
+}
+
+/* INNER BOX */
+.portfolio-img{
+  height:200px;
+  border-radius:20px;
+  background:#eee; /* replace with image later */
+}
+
+/* CONTENT */
+.portfolio-content{
+  text-align:left;
+  padding:15px;
+}
+
+.portfolio-content h3{
+  margin-bottom:10px;
+}
+
+.link{
+  background:linear-gradient(45deg,limegreen,purple);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* HOVER */
+.portfolio-card:hover{
+  transform:translateY(-6px);
+}
+/* IMAGE CONTAINER */
+.portfolio-img{
+  height:200px;
+  border-radius:20px;
+  overflow:hidden; /* 🔥 important */
+}
+
+/* IMAGE */
+.portfolio-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:0.4s;
+}
+
+/* IMAGE HOVER ZOOM */
+.portfolio-card:hover img{
+  transform:scale(1.05);
+}
+
+/* URL TEXT */
+.project-url{
+  font-size:13px;
+  color:#777;
+  margin-bottom:8px;
+}
+
+/* CARD HOVER */
+.portfolio-card:hover{
+  transform:translateY(-6px);
+}
+
+
+
+
+
+
+/* price */
+/* SECTION */
+.pricing{
+  padding:0px 10%;
+  text-align:center; /* 🔥 CENTER EVERYTHING */
+}
+
+/* TITLE (same style as portfolio) */
+.pricing-title{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.pricing-title span{
+  background:linear-gradient(45deg,limegreen,purple);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* SUBTEXT */
+.pricing-sub{
+  color:#666;
+  margin-bottom:40px;
+}
+
+/* GRID */
+.pricing-grid{
+  display:flex;
+  gap:25px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+/* CARD */
+.pricing-card{
+  flex:1;
+ 
+  max-width:350px;
+  max-height: 750px;;
+  padding:40px;
+  border-radius:25px;
+  border:1px solid #535050;
+  text-align:left;
+  position:relative;
+  transition:0.3s;
+}
+
+/* POPULAR BADGE */
+.popular{
+  position:absolute;
+  top:15px;
+  right:15px;
+  font-size:12px;
+  padding:5px 10px;
+  border-radius:10px;
+  background:linear-gradient(45deg,limegreen,purple);
+  color:#fff;
+}
+
+/* PRICE */
+.pricing-card h2{
+  margin:20px 0;
+}
+
+/* LIST */
+.pricing-card ul{
+  margin:20px 0;
+}
+
+/* BUTTON */
+.pricing-card button{
+  width:100%;
+  padding:12px;
+  border-radius:25px;
+  border:none;
+  background:linear-gradient(45deg,limegreen,purple);
+  color:#fff;
+  cursor:pointer;
+}
+
+/* HOVER */
+.pricing-card:hover{
+  transform:translateY(-6px);
+}
+
+
+
+
+
+
+
+/* testimonal */
+
+.testimonial{
+  padding:80px 10%;
+  text-align:center;
+}
+
+.testimonial-title{
+  font-size:40px;
+  margin-bottom:40px;
+}
+
+/* SLIDER */
+.testimonial-slider{
+  position:relative;
+  max-width:700px;
+  margin:auto;
+}
+
+/* CARD */
+.testimonial-card{
+  display:none;
+  padding:30px;
+  border-radius:20px;
+  border:1px solid #eee;
+  background:#fff;
+}
+
+.testimonial-card.active{
+  display:block;
+}
+
+/* STARS */
+.stars{
+  font-size:20px;
+  margin-bottom:15px;
+}
+
+/* CLIENT */
+.client{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  justify-content:center;
+  margin-top:20px;
+}
+
+/* AVATAR */
+.avatar{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:linear-gradient(45deg,limegreen,purple);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* footer */
+/* ===== GLASS FOOTER ===== */
+/* ===== GLASS FOOTER ===== */
+.glass-footer{
+  position:relative;
+  padding:60px 10%;
+  margin-top:60px;
+  text-align:center;
+  overflow:hidden;
+
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+}
+
+/* 🔥 ANIMATED GRADIENT */
+.glass-footer::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+
+  background:linear-gradient(
+    120deg,
+    rgba(50,205,50,0.4),
+    rgba(128,0,128,0.4),
+    rgba(50,205,50,0.4)
+  );
+
+  background-size:300% 300%;
+  animation:footerGradient 8s ease infinite;
+}
+
+/* OPTIONAL GLOW */
+.glass-footer::after{
+  content:"";
+  position:absolute;
+  inset:-30px;
+  z-index:-2;
+
+  background:linear-gradient(120deg,limegreen,purple);
+  filter:blur(80px);
+  opacity:0.3;
+}
+
+/* ANIMATION */
+@keyframes footerGradient{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* LOGO LEFT */
+.footer-logo{
+  position:absolute;
+  left:40px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.footer-logo img{
+  width:140px;
+}
+
+/* CENTER CONTENT */
+.footer-inner{
+  max-width:900px;
+  margin:auto;
+}
+
+/* TITLE */
+.footer-title{
+  margin-bottom:20px;
+}
+
+/* LINKS */
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  margin:20px 0;
+  flex-wrap:wrap;
+}
+
+.footer-links a{
+  text-decoration:none;
+  background:linear-gradient(45deg,limegreen,purple);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* CONTACT */
+.footer-contact{
+  margin:20px 0;
+}
+
+/* 🔥 BUTTON */
+.footer-btn{
+  margin:20px 0;
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,limegreen,purple);
+  color:#fff;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.footer-btn:hover{
+  transform:scale(1.05);
+}
+
+/* SOCIAL */
+.footer-social{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin:20px 0;
+}
+
+.footer-social span{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:linear-gradient(45deg,limegreen,purple);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* COPYRIGHT */
+.footer-copy{
+  margin-top:20px;
+  font-size:14px;
+  color:#555;
+}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+
+  .footer-logo{
+    position:static;
+    transform:none;
+    margin-bottom:20px;
+  }
+
+  .footer-logo img{
+    width:120px;
+  }
+}
